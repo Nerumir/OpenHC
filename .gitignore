@@ -1,0 +1,5 @@
+# Local Docker configuration — never commit real credentials
+.env.docker
+
+# Application source — managed separately, dropped into app/
+app/.claude

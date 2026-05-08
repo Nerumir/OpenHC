@@ -1,0 +1,12 @@
+.git
+.env.docker
+.DS_Store
+app/.env
+app/vendor
+app/node_modules
+app/public/build
+app/public/storage
+app/storage/logs
+app/storage/framework/sessions
+app/storage/framework/cache
+app/storage/framework/views
