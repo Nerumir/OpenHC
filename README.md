@@ -214,4 +214,4 @@ Service check history is pruned automatically every night at 03:00:
 
 ## License
 
-MIT
+GNU General Public License v3.0 — see [LICENSE](LICENSE) for details.
