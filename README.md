@@ -80,8 +80,8 @@ On each container startup, the entrypoint automatically:
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/Nerumir/openhc.git
-cd openhc
+git clone https://github.com/Nerumir/OpenHC.git
+cd OpenHC
 ```
 
 ### 2. Configure the environment
