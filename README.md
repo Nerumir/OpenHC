@@ -80,7 +80,7 @@ On each container startup, the entrypoint automatically:
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/your-username/openhc.git
+git clone https://github.com/Nerumir/openhc.git
 cd openhc
 ```
 
