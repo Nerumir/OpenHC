@@ -128,7 +128,7 @@ Navigate to `http://localhost:8080/register` (or your configured domain/port) to
 
 ```
 http://localhost:8080          # default
-http://your-domain:APP_PORT    # custom
+https://your-domain:APP_PORT    # custom
 ```
 
 ---
