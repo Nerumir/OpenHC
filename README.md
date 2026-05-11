@@ -112,8 +112,10 @@ Open `.env.docker` and adjust the values:
 
 ```bash
 make up
+make migrate
 # or without make:
 docker compose --env-file .env.docker up -d --build
+docker compose --env-file .env.docker exec app php artisan migrate --force
 ```
 
 The first build installs all dependencies and compiles assets inside the image (~3–5 min on a cold build). Subsequent builds are faster thanks to Docker layer caching.
