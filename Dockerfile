@@ -39,20 +39,24 @@ WORKDIR /var/www/html
 COPY app/composer.json app/composer.lock ./
 RUN composer install --no-dev --no-scripts --no-interaction --no-progress
 
-# Install JS deps (layer cached until package.json/lock changes)
-COPY app/package.json app/package-lock.json ./
-RUN npm ci
-
 # Copy app, finaliser l'autoloader et builder les assets
 COPY app/ .
+
+# Generate Laravel cache folders
+RUN mkdir -p storage/framework/cache \
+        storage/framework/sessions \
+        storage/framework/views \
+        bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
+
+# Install JS deps (layer cached until package.json/lock changes)
+COPY app/package.json app/package-lock.json ./
+RUN php /var/www/html/artisan wayfinder:generate --with-form
+RUN npm ci
+
 RUN echo "APP_KEY=base64:$(openssl rand -base64 32)" > .env \
     && echo "APP_NAME=OpenHC" >> .env \
     && echo "VITE_APP_NAME=OpenHC" >> .env \
-    && mkdir -p storage/framework/cache \
-            storage/framework/sessions \
-            storage/framework/views \
-            bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache \
     && composer dump-autoload --optimize \
     && npm run build \
     && rm -f .env
