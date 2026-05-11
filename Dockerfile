@@ -48,6 +48,11 @@ COPY app/ .
 RUN echo "APP_KEY=base64:$(openssl rand -base64 32)" > .env \
     && echo "APP_NAME=OpenHC" >> .env \
     && echo "VITE_APP_NAME=OpenHC" >> .env \
+    && mkdir -p storage/framework/cache \
+            storage/framework/sessions \
+            storage/framework/views \
+            bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache \
     && composer dump-autoload --optimize \
     && npm run build \
     && rm -f .env
